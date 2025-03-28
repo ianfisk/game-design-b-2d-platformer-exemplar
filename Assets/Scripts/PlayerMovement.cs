@@ -9,24 +9,22 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontalMovement;
     private float verticalMovement;
+
+    private Rigidbody2D rb;
     
-    // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        rb.velocityX = speed * horizontalMovement;
     }
 
     public void OnMove(InputAction.CallbackContext context) {
         var movementVec = context.ReadValue<Vector2>();
         horizontalMovement = movementVec.x;
         verticalMovement = movementVec.y;
-
-        Debug.Log($"horizontalMovement = {horizontalMovement}; verticalMovement = {verticalMovement}");
     }
 }
