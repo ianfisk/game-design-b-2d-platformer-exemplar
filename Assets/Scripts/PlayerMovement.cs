@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f;
 
     private float horizontalMovement;
-    private float verticalMovement;
 
     private Rigidbody2D rb;
     
@@ -25,6 +24,5 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context) {
         var movementVec = context.ReadValue<Vector2>();
         horizontalMovement = movementVec.x;
-        verticalMovement = movementVec.y;
     }
 }
