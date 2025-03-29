@@ -25,10 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var groundRayCast = RaycastUtilities.CastRay(
                 new RaycastUtilities.RayData<string>("groundCast", transform.position, Vector2.down, groundCastLength, groundMask));
-        if (groundRayCast)
-        {
-            isGrounded = true;
-        }
+        isGrounded = groundRayCast;
     }
 
     void FixedUpdate()
