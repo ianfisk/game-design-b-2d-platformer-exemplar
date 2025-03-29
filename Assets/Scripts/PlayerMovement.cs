@@ -43,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteAnim.SetBool("IsRunning", false);
         }
+
+        spriteAnim.SetBool("IsGrounded", isGrounded);
+        spriteAnim.SetFloat("VerticalVelocity", rb.velocityY);
     }
 
     void FixedUpdate()
