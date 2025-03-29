@@ -513,6 +513,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCastLength: 0.2
 --- !u!1 &1737256299
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +529,7 @@ GameObject:
   - component: {fileID: 1737256302}
   - component: {fileID: 1737256301}
   - component: {fileID: 1737256304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BasicFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
