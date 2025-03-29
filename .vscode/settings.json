@@ -10,7 +10,6 @@
         "**/*.suo": true,
         "**/*.user": true,
         "**/*.userprefs": true,
-        // "**/*.unityproj": true,
         "**/*.dll": true,
         "**/*.exe": true,
         "**/*.pdf": true,
@@ -36,13 +35,10 @@
         "**/*.MA": true,
         "**/*.obj": true,
         "**/*.OBJ": true,
-        // "**/*.asset": true,
         "**/*.cubemap": true,
         "**/*.flare": true,
         "**/*.mat": true,
-        // "**/*.meta": true,
         "**/*.prefab": true,
-        // "**/*.unity": true,
         "build/": true,
         "Build/": true,
         "Library/": true,
@@ -56,5 +52,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "2D Platformer Exemplar.sln"
+    "dotnet.defaultSolution": "game-design-b-2d-platformer-exemplar.sln"
 }
