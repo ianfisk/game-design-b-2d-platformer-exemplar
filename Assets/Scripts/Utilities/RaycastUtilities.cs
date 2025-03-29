@@ -9,6 +9,7 @@ public static class RaycastUtilities
 	public record RayData<T>(T key, Vector2 Origin, Vector2 Direction, float Distance, LayerMask Mask);
 
 	public static RaycastHit2D CastRay<T>(RayData<T> rayData, bool drawRays = true) => CastAllRays(new RayData<T>[] { rayData }, drawRays).First().raycastHit;
+
 	public static ReadOnlyCollection<(T rayDataKey, RaycastHit2D raycastHit)> CastAllRays<T>(IEnumerable<RayData<T>> rayDatas, bool drawRays = true)
 	{
 		if (drawRays)

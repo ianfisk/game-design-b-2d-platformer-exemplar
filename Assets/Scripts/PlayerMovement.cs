@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMovement;
 
     private Rigidbody2D rb;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     {
         var groundRayCast = RaycastUtilities.CastRay(
                 new RaycastUtilities.RayData<string>("groundCast", transform.position, Vector2.down, groundCastLength, groundMask));
-        if (groundRayCast) {
+        if (groundRayCast)
+        {
             isGrounded = true;
         }
     }
@@ -33,11 +34,13 @@ public class PlayerMovement : MonoBehaviour
         rb.velocityX = speed * horizontalMovement;
     }
 
-    public void OnMove(InputAction.CallbackContext context) {
+    public void OnMove(InputAction.CallbackContext context)
+    {
         var movementVec = context.ReadValue<Vector2>();
         horizontalMovement = movementVec.x;
     }
 
-    public void OnJump(InputAction.CallbackContext context) {
+    public void OnJump(InputAction.CallbackContext context)
+    {
     }
 }
