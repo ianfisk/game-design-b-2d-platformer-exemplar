@@ -15,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce = 0f;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
@@ -26,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
         var groundRayCast = RaycastUtilities.CastRay(
                 new RaycastUtilities.RayData<string>("groundCast", transform.position, Vector2.down, groundCastLength, groundMask));
         isGrounded = groundRayCast;
+
+        if (horizontalMovement > 0)
+            spriteRenderer.flipX = false;
+        else if (horizontalMovement < 0)
+            spriteRenderer.flipX = true;
     }
 
     void FixedUpdate()
@@ -44,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         var movementVec = context.ReadValue<Vector2>();
-        horizontalMovement = movementVec.x;
+        horizontalMovement = movementVec.x; // 1 => Moving right; -1 => Moving left
     }
 
     public void OnJump(InputAction.CallbackContext context)
