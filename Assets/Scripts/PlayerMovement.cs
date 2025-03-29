@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private const float EPSILON = 0.0001f;
+
     public float speed = 1f;
     public float jumpImpulseForce = 2f;
     public LayerMask groundMask;
@@ -16,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private Animator spriteAnim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteAnim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -29,10 +34,15 @@ public class PlayerMovement : MonoBehaviour
                 new RaycastUtilities.RayData<string>("groundCast", transform.position, Vector2.down, groundCastLength, groundMask));
         isGrounded = groundRayCast;
 
-        if (horizontalMovement > 0)
-            spriteRenderer.flipX = false;
-        else if (horizontalMovement < 0)
-            spriteRenderer.flipX = true;
+        if (Math.Abs(horizontalMovement) > EPSILON)
+        {
+            spriteAnim.SetBool("IsRunning", true);
+            spriteRenderer.flipX = horizontalMovement < 0;
+        }
+        else
+        {
+            spriteAnim.SetBool("IsRunning", false);
+        }
     }
 
     void FixedUpdate()
